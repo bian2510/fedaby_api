@@ -17,8 +17,14 @@ gem 'rails_param', '~> 0.10.2'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.2'
 # Token based authentication for Rails JSON APIs.
 gem 'devise_token_auth'
+# Describe your service, as JSON endpoints
+gem 'rswag-api', '~> 2.0', '>= 2.0.5'
+# Expose beautiful API documentation, that's powered by Swagger JSON endpoints.
+gem 'rswag-ui', '~> 2.0', '>= 2.0.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -34,6 +40,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Rspec-rails is a testing framework
+  gem 'rspec-rails'
+  # Generate Swagger files directly from your rspecs
+  gem 'rswag-specs'
 end
 
 group :development do
