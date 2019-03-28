@@ -11,6 +11,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 # Parameter Validation and Type Coercion for Rails
 gem 'rails_param', '~> 0.10.2'
+# Generate your JSON in an object-oriented and convention-driven manner.
+gem 'active_model_serializers', '~> 0.10.9'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -25,6 +27,8 @@ gem 'devise_token_auth'
 gem 'rswag-api', '~> 2.0', '>= 2.0.5'
 # Expose beautiful API documentation, that's powered by Swagger JSON endpoints.
 gem 'rswag-ui', '~> 2.0', '>= 2.0.5'
+# A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -33,9 +37,9 @@ gem 'rswag-ui', '~> 2.0', '>= 2.0.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'devise_token_auth'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
