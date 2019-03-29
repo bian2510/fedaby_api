@@ -14,9 +14,12 @@ class ArticlesController < ApplicationController
     render json: @article
   end
 
-  def search_articles_by_title
-    @articles = Article.where(title: params[:content])
-    render json: @articles
+  # GET /search_articles_by_title
+  def autocomplete_by_title
+    unless params[:content] == '' || params[:content] == ' '
+      @articles = Article.where('title ILIKE ?', "%#{params[:content]}%")
+    end
+    return render json: @articles if @articles != []
   end
 
   # POST /articles
