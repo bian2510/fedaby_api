@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :profile, only: [:show]
 
   # Route for find articles by title
-  get 'find_articles', to: :find_articles_by_title, controller: :articles
+  get 'autocomplete_by_title', to: :autocomplete_by_title, controller: :articles
 
   # Routes for articles
   resources :articles do
