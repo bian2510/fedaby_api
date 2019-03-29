@@ -135,4 +135,26 @@ describe 'Fedaby API' do
       end
     end
   end
+
+  path '/autocomplete_by_title' do
+    get 'find articles by title' do
+      tags 'Articles'
+      consumes 'application/json', 'application/xml'
+      produces 'application/json'
+      parameter name: :content, in: :body, schema: {
+        type: :object,
+        properties: {
+          content: { type: :string }
+        }
+      }
+      response '200', 'Article/Articles find' do
+        let(:content) { { content: 'title' } }
+        run_test!
+      end
+
+      response '400', 'Article/Articles not found' do
+        let(:content) { { test: '' } }
+      end
+    end
+  end
 end
