@@ -16,9 +16,7 @@ class ArticlesController < ApplicationController
 
   # GET /search_articles_by_title
   def autocomplete_by_title
-    unless params[:content] == '' || params[:content] == ' '
-      @articles = Article.where('title ILIKE ?', "%#{params[:content]}%")
-    end
+    @articles = ::Autocomplete.new.autocomplete(params[:content], Article, 'title')
     return render json: @articles if @articles != []
   end
 
