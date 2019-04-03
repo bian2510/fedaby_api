@@ -53,3 +53,29 @@ If you're using rbenv, you'll need to run the following command to make the rail
 Now that you've installed Rails, you can run the rails -v command to make sure you have everything installed correctly:
 `rails -v
 Rails 5.2.2`
+
+# Setting Up PostgreSQL
+
+`sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install postgresql-common
+sudo apt-get install postgresql-9.5 libpq-dev`
+
+`sudo -u postgres createuser bian -s
+sudo -u postgres psql
+postgres=# \password bian`
+
+# Final Steps
+
+Move into the application directory
+`cd fedaby_api`
+
+Create the DB 
+`rails db:create`
+
+Run the migration
+`rails db:migrate`
+
+Run the server
+`rails s`
