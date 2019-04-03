@@ -23,4 +23,27 @@ describe 'Fedaby API' do
       end
     end
   end
+
+  path '/autocomplete_profile' do
+    get 'Search a profile by username' do
+      tags 'Profile'
+      consumes 'application/json', 'application/xml'
+      produces 'application/json'
+      parameter name: :content, in: :body, schema: {
+        type: :object,
+        properties: {
+          content: { type: :string }
+        }
+      }
+      response '200', 'Profile/Profiles find' do
+        let(:content) { { content: 'test' } }
+        run_test!
+      end
+
+      response '204', 'Profile/Profiles not found' do
+        let(:content) { { test: '' } }
+        run_test!
+      end
+    end
+  end
 end
