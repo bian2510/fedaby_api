@@ -60,12 +60,10 @@ describe 'Fedaby API' do
             vote: { type: :integer },
             user_id: { type: :integer }
           },
-          required: [ 'id', 'title', 'content', 'image', 'vote', 'user_id' ]
+          required: [ 'id', 'title', 'content', 'image', 'user_id' ]
         let(:id) {
                     Article.create(title: 'test', content: 'test',
-                                    image: 'test', user_id:
-                                    User.create(email: 'bian2510@hotmail.com',
-                                    password: '123456').id).id
+                                    image: 'test', user_id: user_id)
                   }
         run_test!
       end
@@ -137,7 +135,7 @@ describe 'Fedaby API' do
   end
 
   path '/autocomplete_by_title' do
-    get 'find articles by title' do
+    get 'search articles by title' do
       tags 'Articles'
       consumes 'application/json', 'application/xml'
       produces 'application/json'
@@ -152,8 +150,9 @@ describe 'Fedaby API' do
         run_test!
       end
 
-      response '400', 'Article/Articles not found' do
+      response '204', 'Article/Articles not found' do
         let(:content) { { test: '' } }
+        run_test!
       end
     end
   end
