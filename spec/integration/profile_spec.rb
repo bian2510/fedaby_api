@@ -46,4 +46,12 @@ describe 'Fedaby API' do
       end
     end
   end
+
+  path '/autocomplete_profile' do
+    post 'Follow a user' do
+      tags 'Profile'
+      consumes 'application/json', 'application/xml'
+      produces 'application/json'
+    end
+  end
 end
